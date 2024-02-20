@@ -14,6 +14,19 @@ app.get('/send', (req, res) => {
   res.send('email sent');
 });
 
+app.post('/post', (req, res) => {
+  if (!req.body) {
+    res.send({
+      status: 404,
+      message: 'missing body',
+    });
+  }
+  res.send({
+    status: 200,
+    message: req.body,
+  });
+});
+
 app.listen(port, () => {
   console.log('started server');
   console.log(port);
